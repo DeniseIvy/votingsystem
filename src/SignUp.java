@@ -32,8 +32,6 @@ public class SignUp extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -80,16 +78,7 @@ public class SignUp extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(179, 206, 249));
-        jLabel5.setText("NAME");
-
-        jTextField1.setBackground(new java.awt.Color(133, 156, 191));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(null);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(179, 206, 249));
-        jLabel6.setText("LAST NAME");
+        jLabel5.setText("FULL NAME");
 
         jTextField2.setBackground(new java.awt.Color(133, 156, 191));
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
@@ -130,15 +119,13 @@ public class SignUp extends javax.swing.JFrame {
                                         .addGap(56, 56, 56)
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(54, 54, 54)
+                                    .addGap(55, 55, 55)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(154, 154, 154)
                                 .addComponent(jButton1)))
@@ -156,11 +143,7 @@ public class SignUp extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addGap(7, 7, 7)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(111, 111, 111)
                 .addComponent(jLabel7)
                 .addGap(2, 2, 2)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,13 +215,11 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
