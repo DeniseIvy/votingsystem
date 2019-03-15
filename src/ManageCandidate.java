@@ -41,8 +41,8 @@ public class ManageCandidate extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(72, 99, 142));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(179, 206, 249));
-        jLabel1.setText("ADD CANDIDATE");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Manage Candidate");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(179, 206, 249));
