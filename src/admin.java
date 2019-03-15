@@ -153,7 +153,8 @@ public class admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddCandidbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCandidbActionPerformed
-       new AddCandidate().setVisible(true);
+       dispose();
+        new AddCandidate().setVisible(true);
     }//GEN-LAST:event_AddCandidbActionPerformed
 
     /**
