@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/votingsystem/src/login.java</file>
-            <file>file:/D:/GitHub/votingsystem/src/position.java</file>
+            <file>file:/D:/GitHub/votingsystem/src/Login.java</file>
+            <file>file:/D:/GitHub/votingsystem/src/AdminPanel.java</file>
+            <file>file:/D:/GitHub/votingsystem/src/ManageCandidate.java</file>
+            <file>file:/D:/GitHub/votingsystem/src/SignUp.java</file>
+            <file>file:/D:/GitHub/votingsystem/src/Vote_p.java</file>
         </group>
     </open-files>
 </project-private>

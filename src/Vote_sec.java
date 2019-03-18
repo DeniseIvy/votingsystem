@@ -8,12 +8,12 @@
  *
  * @author denis
  */
-public class Vote_p extends javax.swing.JFrame {
+public class Vote_sec extends javax.swing.JFrame {
 
     /**
      * Creates new form vote
      */
-    public Vote_p() {
+    public Vote_sec() {
         initComponents();
     }
 
@@ -47,7 +47,7 @@ public class Vote_p extends javax.swing.JFrame {
 
         vote_p_lbl.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         vote_p_lbl.setForeground(new java.awt.Color(240, 240, 240));
-        vote_p_lbl.setText("PRESIDENT");
+        vote_p_lbl.setText("SECRETARY");
 
         p_separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -202,18 +202,18 @@ public class Vote_p extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
-        dispose();
-            new Vote_vp().setVisible(true);
+         dispose();
+            new Vote_tres().setVisible(true);
     }//GEN-LAST:event_cp1_vote_btnActionPerformed
 
     private void cp2_voteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp2_voteActionPerformed
-        dispose();
-            new Vote_vp().setVisible(true);
+       dispose();
+            new Vote_tres().setVisible(true);
     }//GEN-LAST:event_cp2_voteActionPerformed
 
     private void p_skip_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_skip_btnActionPerformed
          dispose();
-            new Vote_vp().setVisible(true);
+            new Vote_tres().setVisible(true);
     }//GEN-LAST:event_p_skip_btnActionPerformed
 
     /**

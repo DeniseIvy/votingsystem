@@ -113,9 +113,9 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="viewresultb" alignment="0" max="32767" attributes="0"/>
                       <Component id="AddCandidb" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton3" alignment="0" pref="259" max="32767" attributes="0"/>
+                      <Component id="manangecandidb" alignment="0" pref="259" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
               </Group>
@@ -134,9 +134,9 @@
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Component id="AddCandidb" min="-2" pref="64" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="manangecandidb" min="-2" pref="65" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="viewresultb" min="-2" pref="64" max="-2" attributes="0"/>
                   <EmptySpace pref="250" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -171,7 +171,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddCandidbActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="viewresultb">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="24" style="1"/>
@@ -181,8 +181,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="View Result"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewresultbActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="manangecandidb">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="24" style="1"/>

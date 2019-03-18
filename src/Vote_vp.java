@@ -8,12 +8,12 @@
  *
  * @author denis
  */
-public class Vote_p extends javax.swing.JFrame {
+public class Vote_vp extends javax.swing.JFrame {
 
     /**
      * Creates new form vote
      */
-    public Vote_p() {
+    public Vote_vp() {
         initComponents();
     }
 
@@ -47,7 +47,7 @@ public class Vote_p extends javax.swing.JFrame {
 
         vote_p_lbl.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         vote_p_lbl.setForeground(new java.awt.Color(240, 240, 240));
-        vote_p_lbl.setText("PRESIDENT");
+        vote_p_lbl.setText("VICE PRESIDENT");
 
         p_separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -147,14 +147,16 @@ public class Vote_p extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(vote_p_lbl)
-                .addGap(401, 401, 401))
+                .addGap(339, 339, 339))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vote_p_lbl)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(cp2_name, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,8 +166,6 @@ public class Vote_p extends javax.swing.JFrame {
                         .addComponent(cp2_year, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(vote_p_lbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cp1_pic1)
@@ -203,17 +203,17 @@ public class Vote_p extends javax.swing.JFrame {
 
     private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
         dispose();
-            new Vote_vp().setVisible(true);
+            new Vote_sec().setVisible(true);
     }//GEN-LAST:event_cp1_vote_btnActionPerformed
 
     private void cp2_voteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp2_voteActionPerformed
-        dispose();
-            new Vote_vp().setVisible(true);
+         dispose();
+            new Vote_sec().setVisible(true);
     }//GEN-LAST:event_cp2_voteActionPerformed
 
     private void p_skip_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_skip_btnActionPerformed
-         dispose();
-            new Vote_vp().setVisible(true);
+        dispose();
+            new Vote_sec().setVisible(true);
     }//GEN-LAST:event_p_skip_btnActionPerformed
 
     /**

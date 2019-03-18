@@ -112,6 +112,11 @@ public class Login extends javax.swing.JFrame {
         signupb.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         signupb.setForeground(new java.awt.Color(133, 156, 191));
         signupb.setText("SIGN UP");
+        signupb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -249,6 +254,11 @@ public class Login extends javax.swing.JFrame {
         lbl_user.setForeground(new Color(33,33,33));
         jSeparator1.setBackground(new Color(33,33,33));
     }//GEN-LAST:event_usernamefFocusLost
+
+    private void signupbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbActionPerformed
+        dispose();
+            new SignUp().setVisible(true);
+    }//GEN-LAST:event_signupbActionPerformed
 
     /**
      * @param args the command line arguments
