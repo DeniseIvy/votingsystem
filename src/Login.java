@@ -1,5 +1,10 @@
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,7 +23,28 @@ public class Login extends javax.swing.JFrame {
      * Creates new form login
      */
     public Login() {
+        startAll();
+    }
+    
+    public void startAll(){
         initComponents();
+    }
+    
+    public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3307/voting_db";
+        String username = "root";
+        String password = "";
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            startAll();
+            return null;
+        }
     }
 
     /**
