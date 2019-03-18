@@ -9,5 +9,21 @@
  * @author Nicolei
  */
 public class Database {
+    private String p_names;
     
+    
+    private byte[] picture;
+    
+    public Database(String pname, byte[] pimg){
+        this.p_names = pname;
+        this.picture = pimg;
+    }
+
+    public String getName() {
+        return p_names;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
 }
