@@ -203,17 +203,17 @@ public class Vote_p extends javax.swing.JFrame {
 
     private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
         dispose();
-            new Vote_vp().setVisible(true);
+        new Vote_vp().setVisible(true);
     }//GEN-LAST:event_cp1_vote_btnActionPerformed
 
     private void cp2_voteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp2_voteActionPerformed
         dispose();
-            new Vote_vp().setVisible(true);
+        new Vote_vp().setVisible(true);
     }//GEN-LAST:event_cp2_voteActionPerformed
 
     private void p_skip_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_skip_btnActionPerformed
-         dispose();
-            new Vote_vp().setVisible(true);
+        dispose();
+        new Vote_vp().setVisible(true);
     }//GEN-LAST:event_p_skip_btnActionPerformed
 
     /**
