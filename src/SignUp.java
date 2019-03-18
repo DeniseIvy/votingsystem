@@ -41,9 +41,10 @@ public class SignUp extends javax.swing.JFrame {
         signupb = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        lbl_user1 = new javax.swing.JLabel();
-        usernamef1 = new javax.swing.JTextField();
+        lbl_name = new javax.swing.JLabel();
+        namef = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
+        btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +59,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(72, 99, 142));
 
         lbl_user.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        lbl_user.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_user.setForeground(new java.awt.Color(51, 51, 51));
         lbl_user.setText("ID NUMBER");
 
         usernamef.setBackground(new java.awt.Color(72, 99, 142));
@@ -104,26 +105,40 @@ public class SignUp extends javax.swing.JFrame {
         signupb.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         signupb.setForeground(new java.awt.Color(133, 156, 191));
         signupb.setText("SIGN UP");
-
-        lbl_user1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        lbl_user1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_user1.setText("FULLNAME");
-
-        usernamef1.setBackground(new java.awt.Color(72, 99, 142));
-        usernamef1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        usernamef1.setForeground(new java.awt.Color(255, 255, 255));
-        usernamef1.setBorder(null);
-        usernamef1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                usernamef1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usernamef1FocusLost(evt);
+        signupb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupbActionPerformed(evt);
             }
         });
-        usernamef1.addActionListener(new java.awt.event.ActionListener() {
+
+        lbl_name.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lbl_name.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_name.setText("FULLNAME");
+
+        namef.setBackground(new java.awt.Color(72, 99, 142));
+        namef.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        namef.setForeground(new java.awt.Color(255, 255, 255));
+        namef.setBorder(null);
+        namef.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                namefFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                namefFocusLost(evt);
+            }
+        });
+        namef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernamef1ActionPerformed(evt);
+                namefActionPerformed(evt);
+            }
+        });
+
+        btn_back.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(133, 156, 191));
+        btn_back.setText("BACK");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
             }
         });
 
@@ -132,15 +147,11 @@ public class SignUp extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(signupb)
-                .addGap(0, 232, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbl_user1)
-                        .addComponent(usernamef1)
+                        .addComponent(lbl_name)
+                        .addComponent(namef)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbl_pass)
@@ -149,15 +160,21 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(jSeparator1)
                         .addComponent(passwordf)
                         .addComponent(jSeparator2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(201, 201, 201)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(signupb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(lbl_user1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_name, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernamef1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(namef, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -174,7 +191,9 @@ public class SignUp extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95)
                 .addComponent(signupb)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_back)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -246,17 +265,41 @@ public class SignUp extends javax.swing.JFrame {
         jSeparator1.setBackground(new Color(33,33,33));
     }//GEN-LAST:event_usernamefFocusLost
 
-    private void usernamef1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamef1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernamef1FocusGained
+    private void namefFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namefFocusGained
+        lbl_name.setForeground(new Color(240,240,240));
+        jSeparator3.setBackground(new Color(149,165,166));
+    }//GEN-LAST:event_namefFocusGained
 
-    private void usernamef1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamef1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernamef1FocusLost
+    private void namefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namefFocusLost
+        lbl_name.setForeground(new Color(33,33,33));
+        jSeparator3.setBackground(new Color(33,33,33));
+    }//GEN-LAST:event_namefFocusLost
 
-    private void usernamef1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamef1ActionPerformed
+    private void namefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namefActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernamef1ActionPerformed
+    }//GEN-LAST:event_namefActionPerformed
+
+    private void signupbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbActionPerformed
+        
+        if (namef.getText().trim().isEmpty() || usernamef.getText().trim().isEmpty() || passwordf.getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Incomplete Info.");
+        }
+        else 
+        {
+           JOptionPane.showMessageDialog(null,"Sign up success!");
+           namef.setText(null);
+           usernamef.setText(null);
+           passwordf.setText(null);
+           dispose();
+           new Login().setVisible(true);
+        }
+    }//GEN-LAST:event_signupbActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btn_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,6 +338,7 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_back;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
@@ -302,12 +346,12 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_pass;
     private javax.swing.JLabel lbl_user;
-    private javax.swing.JLabel lbl_user1;
+    private javax.swing.JTextField namef;
     private javax.swing.JPasswordField passwordf;
     private javax.swing.JButton signupb;
     private javax.swing.JTextField usernamef;
-    private javax.swing.JTextField usernamef1;
     // End of variables declaration//GEN-END:variables
 }
