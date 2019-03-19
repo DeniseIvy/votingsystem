@@ -39,11 +39,11 @@ public class ManageCandidate extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_name = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        cb_pos = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txt_yc = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_add = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         imagehandler = new javax.swing.JLabel();
         btn_addimg = new javax.swing.JButton();
@@ -69,10 +69,10 @@ public class ManageCandidate extends javax.swing.JFrame {
         txt_name.setForeground(new java.awt.Color(255, 255, 255));
         txt_name.setBorder(null);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "POSITION", "PRESIDENT", "VICE-PRESIDENT", "SECRETARY", "TREASURER" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cb_pos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "POSITION", "PRESIDENT", "VICE-PRESIDENT", "SECRETARY", "TREASURER" }));
+        cb_pos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cb_posActionPerformed(evt);
             }
         });
 
@@ -89,9 +89,14 @@ public class ManageCandidate extends javax.swing.JFrame {
         txt_yc.setForeground(new java.awt.Color(255, 255, 255));
         txt_yc.setBorder(null);
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(133, 156, 191));
-        jButton1.setText("ADD");
+        btn_add.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btn_add.setForeground(new java.awt.Color(133, 156, 191));
+        btn_add.setText("ADD");
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(179, 206, 249));
@@ -149,14 +154,14 @@ public class ManageCandidate extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton1)
+                            .addComponent(btn_add)
                             .addGap(27, 27, 27)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(txt_name, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_yc, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_pos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_party)))
                 .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +199,7 @@ public class ManageCandidate extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cb_pos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(181, 181, 181)
                         .addComponent(btn_back))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -203,7 +208,7 @@ public class ManageCandidate extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_addimg)
-                            .addComponent(jButton1)
+                            .addComponent(btn_add)
                             .addComponent(jButton3)
                             .addComponent(jButton2))))
                 .addContainerGap())
@@ -260,9 +265,9 @@ public class ManageCandidate extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_addimgActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cb_posActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_posActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cb_posActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         dispose();
@@ -272,6 +277,36 @@ public class ManageCandidate extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        
+        if(txt_name.getText().trim().isEmpty() || txt_yc.getText().trim().isEmpty() || txt_party.getText().trim().isEmpty() && ImgPath != null)
+        {
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement("INSERT INTO inventory_table(name,price,quantity,date,picture)"
+                        + "values(?,?,?,?,?) ");
+                ps.setString(1, tf_name.getText());
+                ps.setString(2, tf_price.getText());
+                ps.setString(3, tf_quantity.getText());
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String addDate = dateFormat.format(jdc_date.getDate());
+                ps.setString(4, addDate);
+
+                InputStream img = new FileInputStream(new File(ImgPath));
+                ps.setBlob(5, img);
+                ps.executeUpdate();
+                Show_Products_In_JTable();
+
+                JOptionPane.showMessageDialog(null, "Data Inserted");
+            } catch (Exception ex) {
+                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "One Or More Field Are Empty");
+        }
+    }//GEN-LAST:event_btn_addActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,13 +345,13 @@ public class ManageCandidate extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_addimg;
     private javax.swing.JButton btn_back;
+    private javax.swing.JComboBox cb_pos;
     private javax.swing.JLabel imagehandler;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
