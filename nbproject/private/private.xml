@@ -3,12 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/SignUp.java</file>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Login.java</file>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/StoreVote.java</file>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Database.java</file>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/ManageCandidate.java</file>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Vote_p.java</file>
+=======
+            <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Vote_vp.java</file>
+            <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/ty.java</file>
+            <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Vote_p.java</file>
+            <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Vote_tres.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
