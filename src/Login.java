@@ -28,16 +28,18 @@ public class Login extends javax.swing.JFrame {
     
     public void startAll(){
         initComponents();
-    }
+        getConnection();
+    }   
     
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3307/voting_db";
+        String url = "jdbc:mysql://localhost:3306/voting_db";
         String username = "root";
         String password = "";
         Connection con = null;
 
         try {
             con = DriverManager.getConnection(url,username,password);
+            System.out.println("Connection Success");
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -235,6 +237,7 @@ public class Login extends javax.swing.JFrame {
     private void loginbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbActionPerformed
         String username = usernamef.getText();
         String password = passwordf.getText();
+        
         
         if (username.equals("admin")&& password.equals("1234"))
         {

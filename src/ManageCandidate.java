@@ -1,8 +1,17 @@
 
 import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
@@ -69,7 +78,8 @@ public class ManageCandidate extends javax.swing.JFrame {
         txt_name.setForeground(new java.awt.Color(255, 255, 255));
         txt_name.setBorder(null);
 
-        cb_pos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "POSITION", "PRESIDENT", "VICE-PRESIDENT", "SECRETARY", "TREASURER" }));
+        cb_pos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PRESIDENT", "VICE-PRESIDENT", "SECRETARY", "TREASURER", "AUDITOR" }));
+        cb_pos.setToolTipText("Select Position");
         cb_pos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_posActionPerformed(evt);
@@ -278,34 +288,53 @@ public class ManageCandidate extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3306/voting_db";
+        String username = "root";
+        String password = "";
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         
-        if(txt_name.getText().trim().isEmpty() || txt_yc.getText().trim().isEmpty() || txt_party.getText().trim().isEmpty() && ImgPath != null)
+        if(txt_name.getText() != null || txt_yc.getText() != null  || txt_party.getText() != null  && ImgPath != null)
         {
             try {
                 Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO inventory_table(name,price,quantity,date,picture)"
+                PreparedStatement ps = con.prepareStatement("INSERT INTO candidates_table(name,yearcourse,party,position,image)"
                         + "values(?,?,?,?,?) ");
-                ps.setString(1, tf_name.getText());
-                ps.setString(2, tf_price.getText());
-                ps.setString(3, tf_quantity.getText());
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String addDate = dateFormat.format(jdc_date.getDate());
-                ps.setString(4, addDate);
-
+                ps.setString(1, txt_name.getText());
+                ps.setString(2, txt_yc.getText());
+                ps.setString(3, txt_party.getText());
+                ps.setString(4, cb_pos.getSelectedItem().toString());
+                
+                
                 InputStream img = new FileInputStream(new File(ImgPath));
                 ps.setBlob(5, img);
                 ps.executeUpdate();
-                Show_Products_In_JTable();
 
-                JOptionPane.showMessageDialog(null, "Data Inserted");
+                JOptionPane.showMessageDialog(null, "Candidate Added");
             } catch (Exception ex) {
                  JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }else{
             JOptionPane.showMessageDialog(null, "One Or More Field Are Empty");
         }
+        
+        System.out.println("Name: " + txt_name.getText());
+        System.out.println("Year: " + txt_yc.getText());
+        System.out.println("Party: " + txt_party.getText());
+        System.out.println("Position: " + cb_pos.getSelectedItem().toString());
+        System.out.println("ImagePath: " + ImgPath);
     }//GEN-LAST:event_btn_addActionPerformed
 
     /**
