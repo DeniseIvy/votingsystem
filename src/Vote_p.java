@@ -1,3 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -201,7 +211,40 @@ public class Vote_p extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3307/voting_db";
+        String username = "root";
+        String password = "";
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
     private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
+        String vote = "1";
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps1 = con.prepareStatement("SELECT name FROM voting_tbl WHERE name = ?");
+        ps1.setString(1,vote);
+        ResultSet rs = ps1.executeQuery();
+        
+        PreparedStatement ps3 = con.prepareStatement("UPDATE menu_tbl SET quantity = quantity + 1, price = price + 120 WHERE name = ? and quantity > -1");
+        ps3.setString(1, vote);
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         dispose();
         new Vote_vp().setVisible(true);
     }//GEN-LAST:event_cp1_vote_btnActionPerformed
