@@ -71,7 +71,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="cp1_vote_btn" min="-2" pref="93" max="-2" attributes="0"/>
+                  <Component id="cvp1_vote_btn" min="-2" pref="93" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="p_skip_btn" min="-2" pref="141" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -82,7 +82,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cp2_vote" min="-2" pref="93" max="-2" attributes="0"/>
+                          <Component id="cvp2_vote" min="-2" pref="93" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -123,8 +123,8 @@
                                   <Component id="cp1_year" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cp1_vote_btn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="cp2_vote" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="cvp1_vote_btn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="cvp2_vote" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -202,12 +202,12 @@
             <Property name="text" type="java.lang.String" value="Year - Course"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="cp1_vote_btn">
+        <Component class="javax.swing.JButton" name="cvp1_vote_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="VOTE"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cp1_vote_btnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvp1_vote_btnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="cp1_pic1">
@@ -260,12 +260,12 @@
             <Property name="text" type="java.lang.String" value="Year - Course"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="cp2_vote">
+        <Component class="javax.swing.JButton" name="cvp2_vote">
           <Properties>
             <Property name="text" type="java.lang.String" value="VOTE"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cp2_voteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvp2_voteActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

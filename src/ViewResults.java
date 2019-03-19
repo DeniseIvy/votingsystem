@@ -1,6 +1,7 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -45,6 +46,8 @@ public class ViewResults extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
+        btn_start = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +100,24 @@ public class ViewResults extends javax.swing.JFrame {
             }
         });
 
+        btn_reset.setBackground(new java.awt.Color(153, 0, 0));
+        btn_reset.setText("RESET VOTES");
+        btn_reset.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
+
+        btn_start.setBackground(new java.awt.Color(153, 255, 153));
+        btn_start.setText("INITIALIZE");
+        btn_start.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,11 +132,17 @@ public class ViewResults extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(317, 317, 317))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btn_start, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(25, 25, 25))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,7 +164,10 @@ public class ViewResults extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addGap(139, 139, 139)
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_start, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -156,7 +186,7 @@ public class ViewResults extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3306/voting_db";
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
         String username = "root";
         String password = "";
         Connection con = null;
@@ -220,6 +250,44 @@ public class ViewResults extends javax.swing.JFrame {
         new AdminPanel().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        Connection con = getConnection();
+        
+        try{
+//        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+//                + "pres_vote_1 = 0, pres_vote_2 = 0, "
+//                + "vpres_vote_1 = 0, vpres_vote_2 = 0, "
+//                + "sec_vote_1 = 0, sec_vote_2 = 0, "
+//                + "tres_vote_1 = 0, tres_vote_2 = 0,"
+//                + "aud_vote_1 = 0, aud_vote_2 = 0");
+        
+        PreparedStatement ps3 = con.prepareStatement("DELETE FROM voting_table");
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps3 = con.prepareStatement("INSERT INTO voting_table SET "
+                + "pres_vote_1 = 0, pres_vote_2 = 0, "
+                + "vpres_vote_1 = 0, vpres_vote_2 = 0, "
+                + "sec_vote_1 = 0, sec_vote_2 = 0, "
+                + "tres_vote_1 = 0, tres_vote_2 = 0,"
+                + "aud_vote_1 = 0, aud_vote_2 = 0");
+        
+        
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_startActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +326,8 @@ public class ViewResults extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_reset;
+    private javax.swing.JButton btn_start;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

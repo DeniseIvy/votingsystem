@@ -24,7 +24,7 @@ public class Vote_p extends javax.swing.JFrame {
      * Creates new form vote
      */
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3306/voting_db";
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
         String username = "root";
         String password = "";
         Connection con = null;
@@ -232,12 +232,15 @@ public class Vote_p extends javax.swing.JFrame {
     
     
     private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
-        
         Connection con = getConnection();
         
         try{
-        PreparedStatement ps3 = con.prepareStatement("INSERT INTO voting_table SET pres_vote_1 = pres_vote_1 + 1, pres_vote_2 = pres_vote_2 + 0, vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 + 0, sec_vote_1 = sec_vote_1 + 0, \n" +
-"sec_vote_2 = sec_vote_2 + 0, tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 0,aud_vote_1 = aud_vote_1 + 0,aud_vote_2 = aud_vote_2 + 0");
+        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+                + "pres_vote_1 = pres_vote_1 + 1, pres_vote_2 = pres_vote_2 + 0, "
+                + "vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 + 0, "
+                + "sec_vote_1 = sec_vote_1 + 0, sec_vote_2 = sec_vote_2 + 0, "
+                + "tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 0,"
+                + "aud_vote_1 = aud_vote_1 + 0,aud_vote_2 = aud_vote_2 + 0");
         
         ps3.executeUpdate();
         
@@ -255,8 +258,12 @@ public class Vote_p extends javax.swing.JFrame {
         Connection con = getConnection();
         
         try{
-        PreparedStatement ps3 = con.prepareStatement("INSERT INTO voting_table SET pres_vote_1 = pres_vote_1 + 0, pres_vote_2 = pres_vote_2 + 1, vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 + 0, sec_vote_1 = sec_vote_1 + 0, \n" +
-"sec_vote_2 = sec_vote_2 + 0, tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 0,aud_vote_1 = aud_vote_1 + 0,aud_vote_2 = aud_vote_2 + 0");
+        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+                + "pres_vote_1 = pres_vote_1 + 0, pres_vote_2 = pres_vote_2 + 1, "
+                + "vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 + 0, "
+                + "sec_vote_1 = sec_vote_1 + 0, sec_vote_2 = sec_vote_2 + 0, "
+                + "tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 0,"
+                + "aud_vote_1 = aud_vote_1 + 0,aud_vote_2 = aud_vote_2 + 0");
         
         ps3.executeUpdate();
         

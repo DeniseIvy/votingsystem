@@ -32,7 +32,7 @@ public class Login extends javax.swing.JFrame {
     }   
     
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3306/voting_db";
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
         String username = "root";
         String password = "";
         Connection con = null;
