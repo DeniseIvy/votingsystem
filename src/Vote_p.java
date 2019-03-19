@@ -1,12 +1,17 @@
 
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +25,10 @@ import javax.swing.JOptionPane;
  */
 public class Vote_p extends javax.swing.JFrame {
 
+    public String[][] temp = new String[10][5];
+    public String[][] retrieve = new String[10][5];
+    public byte[] tempimg;
+    
     /**
      * Creates new form vote
      */
@@ -41,8 +50,108 @@ public class Vote_p extends javax.swing.JFrame {
     
     public Vote_p() {
         initComponents();
+        retrieveData();
+        Replace();
+        
+    }
+    
+    public ArrayList<CandidateDB> getList(){
+            ArrayList<CandidateDB> List  = new ArrayList<CandidateDB>();
+            Connection con = getConnection();
+            String query = "SELECT * FROM candidates_table";
+
+            Statement st;
+            ResultSet rs;
+
+        try {
+
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            CandidateDB records;
+
+            while(rs.next()){
+                records = new CandidateDB(rs.getString("name"),rs.getString("yearcourse"),rs.getString("party"),rs.getString("Position"),rs.getBytes("image"));
+                List.add(records);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return List;
+
+    } 
+    
+    public void retrieveData(){
+        ArrayList<CandidateDB> list = getList();
+        
+        for(int i = 0; i < list.size(); i++)
+        {
+            temp[i][0] = list.get(i).getName();
+            temp[i][1] = list.get(i).getYearCourse();           
+            temp[i][2] = list.get(i).getParty();            
+            temp[i][3] = list.get(i).getPosition();            
+            tempimg = list.get(i).getImg();
+            
+            System.out.println(temp[i][0]);
+            System.out.println(temp[i][1]);
+            System.out.println(temp[i][2]);
+            System.out.println(temp[i][3]);
+            System.out.println(tempimg);
+        }
+        
+        for(int i = 0; i < list.size(); i++)
+        {
+            if(temp[i][3] == "President"){
+                retrieve[i][0] = temp[i][0];
+                retrieve[i][1] = temp[i][1];           
+                retrieve[i][2] = temp[i][2];            
+                retrieve[i][3] = temp[i][3];            
+                retrieve[i][4] = temp[i][4];
+            } else {
+                retrieve[i][0] = temp[i][0];
+                retrieve[i][1] = temp[i][1];           
+                retrieve[i][2] = temp[i][2];            
+                retrieve[i][3] = temp[i][3];            
+                retrieve[i][4] = temp[i][4];
+            }
+            
+            
+            System.out.println(retrieve[i][0]);
+            System.out.println(retrieve[i][1]);
+            System.out.println(retrieve[i][2]);
+            System.out.println(retrieve[i][3]);
+            System.out.println(retrieve[i][4]);
+        }
+        
+    }
+
+    public ImageIcon ResizeImage(String imagePath, byte[] pic){
+        ImageIcon myImage = null;
+
+        if(imagePath != null){
+            myImage = new ImageIcon(imagePath);
+        }else{
+            myImage = new ImageIcon(pic);
+        }
+
+        Image img = myImage.getImage();
+        Image img2 = img.getScaledInstance(cp1_pic.getWidth(), cp1_pic.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(img2);
+        return image;
+
+    }
+    
+    public void Replace(){
+        String imgstring = retrieve[0][4];
+       
         
         
+        cp1_name.setText(retrieve[0][0]);
+        cp1_year.setText(retrieve[0][1]);
+        cp1_party.setText(retrieve[0][2]);
+
+        //cp1_pic.setIcon(ResizeImage(null, ));
     }
 
     /**
@@ -62,8 +171,8 @@ public class Vote_p extends javax.swing.JFrame {
         cp1_party = new javax.swing.JLabel();
         cp1_year = new javax.swing.JLabel();
         cp1_vote_btn = new javax.swing.JButton();
-        cp1_pic1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        cp1_pic = new javax.swing.JLabel();
+        cp2_pic = new javax.swing.JLabel();
         cp2_name = new javax.swing.JLabel();
         cp2_party = new javax.swing.JLabel();
         cp2_year = new javax.swing.JLabel();
@@ -108,9 +217,9 @@ public class Vote_p extends javax.swing.JFrame {
             }
         });
 
-        cp1_pic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/placeholder.png"))); // NOI18N
+        cp1_pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/placeholder.png"))); // NOI18N
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/placeholder.png"))); // NOI18N
+        cp2_pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/placeholder.png"))); // NOI18N
 
         cp2_name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         cp2_name.setForeground(new java.awt.Color(179, 206, 249));
@@ -142,7 +251,7 @@ public class Vote_p extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(cp1_pic1)
+                        .addComponent(cp1_pic)
                         .addGap(123, 123, 123))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
@@ -156,7 +265,7 @@ public class Vote_p extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cp2_party, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cp2_name, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cp2_pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -183,7 +292,7 @@ public class Vote_p extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addComponent(jLabel1)
+                        .addComponent(cp2_pic)
                         .addGap(18, 18, 18)
                         .addComponent(cp2_name, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -196,7 +305,7 @@ public class Vote_p extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cp1_pic1)
+                                .addComponent(cp1_pic)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cp1_name, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -321,14 +430,14 @@ public class Vote_p extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cp1_name;
     private javax.swing.JLabel cp1_party;
-    private javax.swing.JLabel cp1_pic1;
+    private javax.swing.JLabel cp1_pic;
     private javax.swing.JButton cp1_vote_btn;
     private javax.swing.JLabel cp1_year;
     private javax.swing.JLabel cp2_name;
     private javax.swing.JLabel cp2_party;
+    private javax.swing.JLabel cp2_pic;
     private javax.swing.JButton cp2_vote;
     private javax.swing.JLabel cp2_year;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator p_separator;
     private javax.swing.JButton p_skip_btn;
