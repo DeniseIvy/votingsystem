@@ -31,9 +31,10 @@ public class AdminPanel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         adminlabel = new javax.swing.JLabel();
-        AddCandidb = new javax.swing.JButton();
-        viewresultb = new javax.swing.JButton();
-        manangecandidb = new javax.swing.JButton();
+        btn_candidate = new javax.swing.JButton();
+        btn_view = new javax.swing.JButton();
+        btn_voters = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,57 +79,74 @@ public class AdminPanel extends javax.swing.JFrame {
         adminlabel.setForeground(new java.awt.Color(179, 206, 249));
         adminlabel.setText("ADMIN");
 
-        AddCandidb.setBackground(new java.awt.Color(255, 255, 255));
-        AddCandidb.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        AddCandidb.setForeground(new java.awt.Color(133, 156, 191));
-        AddCandidb.setText("Manage Candidate");
-        AddCandidb.addActionListener(new java.awt.event.ActionListener() {
+        btn_candidate.setBackground(new java.awt.Color(255, 255, 255));
+        btn_candidate.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btn_candidate.setForeground(new java.awt.Color(133, 156, 191));
+        btn_candidate.setText("Manage Candidate");
+        btn_candidate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddCandidbActionPerformed(evt);
+                btn_candidateActionPerformed(evt);
             }
         });
 
-        viewresultb.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        viewresultb.setForeground(new java.awt.Color(133, 156, 191));
-        viewresultb.setText("View Result");
-        viewresultb.addActionListener(new java.awt.event.ActionListener() {
+        btn_view.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btn_view.setForeground(new java.awt.Color(133, 156, 191));
+        btn_view.setText("View Result");
+        btn_view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewresultbActionPerformed(evt);
+                btn_viewActionPerformed(evt);
             }
         });
 
-        manangecandidb.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        manangecandidb.setForeground(new java.awt.Color(133, 156, 191));
-        manangecandidb.setText("Manage Voters");
+        btn_voters.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btn_voters.setForeground(new java.awt.Color(133, 156, 191));
+        btn_voters.setText("Manage Voters");
+        btn_voters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_votersActionPerformed(evt);
+            }
+        });
+
+        btn_back.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(133, 156, 191));
+        btn_back.setText("Back");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewresultb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddCandidb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manangecandidb, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
-                .addGap(128, 128, 128))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(adminlabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(212, 212, 212))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_view, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_candidate, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                        .addComponent(btn_voters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(157, 157, 157))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(adminlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(AddCandidb, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manangecandidb, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewresultb, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGap(103, 103, 103)
+                .addComponent(adminlabel)
+                .addGap(59, 59, 59)
+                .addComponent(btn_candidate)
+                .addGap(18, 18, 18)
+                .addComponent(btn_voters)
+                .addGap(18, 18, 18)
+                .addComponent(btn_view)
+                .addGap(18, 18, 18)
+                .addComponent(btn_back)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,15 +166,26 @@ public class AdminPanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void AddCandidbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCandidbActionPerformed
-       dispose();
+    
+    private void btn_candidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_candidateActionPerformed
+        dispose();
         new ManageCandidate().setVisible(true);
-    }//GEN-LAST:event_AddCandidbActionPerformed
+    }//GEN-LAST:event_btn_candidateActionPerformed
 
-    private void viewresultbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewresultbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewresultbActionPerformed
+    private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
+        dispose();
+        new ViewResults().setVisible(true);
+    }//GEN-LAST:event_btn_viewActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btn_backActionPerformed
+
+    private void btn_votersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_votersActionPerformed
+        dispose();
+        new ManageVoters().setVisible(true);
+    }//GEN-LAST:event_btn_votersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,13 +224,14 @@ public class AdminPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddCandidb;
     private javax.swing.JLabel adminlabel;
+    private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_candidate;
+    private javax.swing.JButton btn_view;
+    private javax.swing.JButton btn_voters;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton manangecandidb;
-    private javax.swing.JButton viewresultb;
     // End of variables declaration//GEN-END:variables
 }
