@@ -1,6 +1,7 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,6 +28,7 @@ public class ViewResults extends javax.swing.JFrame {
      */
     public ViewResults() {
         initComponents();
+        showVotes();
     }
 
     /**
@@ -41,10 +43,15 @@ public class ViewResults extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_results = new javax.swing.JTable();
+        tbl_resultsp1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
+        btn_start = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_resultsp2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +61,8 @@ public class ViewResults extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RESULTS");
 
-        tbl_results.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        tbl_results.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_resultsp1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tbl_resultsp1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null}
@@ -79,16 +86,16 @@ public class ViewResults extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_results.setRowHeight(40);
-        jScrollPane1.setViewportView(tbl_results);
+        tbl_resultsp1.setRowHeight(40);
+        jScrollPane1.setViewportView(tbl_resultsp1);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("CANDIDATE 1");
+        jLabel2.setText("PARTY 1");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CANDIDATE 2");
+        jLabel3.setText("PARTY 2");
 
         btn_back.setText("BACK");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +103,61 @@ public class ViewResults extends javax.swing.JFrame {
                 btn_backActionPerformed(evt);
             }
         });
+
+        btn_reset.setBackground(new java.awt.Color(153, 0, 0));
+        btn_reset.setText("RESET VOTES");
+        btn_reset.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
+
+        btn_start.setBackground(new java.awt.Color(153, 255, 153));
+        btn_start.setText("INITIALIZE");
+        btn_start.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
+
+        btn_update.setBackground(new java.awt.Color(153, 255, 153));
+        btn_update.setText("UPDATE RESULTS");
+        btn_update.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+
+        tbl_resultsp2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tbl_resultsp2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "President", "Vice President", "Secretary", "Treasurer", "Auditor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbl_resultsp2.setRowHeight(40);
+        jScrollPane2.setViewportView(tbl_resultsp2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,40 +167,59 @@ public class ViewResults extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 32, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btn_start, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel2)))
                                 .addGap(317, 317, 317))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(368, 368, 368)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(169, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(139, 139, 139)
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGap(60, 60, 60)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_start, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,7 +237,7 @@ public class ViewResults extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3306/voting_db";
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
         String username = "root";
         String password = "";
         Connection con = null;
@@ -171,10 +252,10 @@ public class ViewResults extends javax.swing.JFrame {
         }
     }
     
-    public ArrayList<Database> getList(){
-            ArrayList<Database> List  = new ArrayList<Database>();
+    public ArrayList<VoteDB> getList(){
+            ArrayList<VoteDB> List  = new ArrayList<VoteDB>();
             Connection con = getConnection();
-            String query = "SELECT * FROM menu_tbl";
+            String query = "SELECT * FROM voting_table";
 
             Statement st;
             ResultSet rs;
@@ -183,11 +264,11 @@ public class ViewResults extends javax.swing.JFrame {
 
             st = con.createStatement();
             rs = st.executeQuery(query);
-            Database records;
+            VoteDB records;
 
             while(rs.next()){
-                //records = new Database(rs.getString("name"),Float.parseFloat(rs.getString("price")),rs.getInt("quantity"));
-                //List.add(records);
+                records = new VoteDB(rs.getInt("pres_vote_1"),rs.getInt("pres_vote_2"),rs.getInt("vpres_vote_1"),rs.getInt("vpres_vote_2"),rs.getInt("sec_vote_1"),rs.getInt("sec_vote_2"),rs.getInt("tres_vote_1"),rs.getInt("tres_vote_2"),rs.getInt("aud_vote_1"),rs.getInt("aud_vote_2"));
+                List.add(records);
             }
 
         } catch (SQLException ex) {
@@ -199,18 +280,38 @@ public class ViewResults extends javax.swing.JFrame {
     } 
     
     public void showVotes(){
-        ArrayList<Database> list = getList();
-        DefaultTableModel model = (DefaultTableModel)tbl_results.getModel();
+        ArrayList<VoteDB> list = getList();
+        DefaultTableModel model = (DefaultTableModel)tbl_resultsp1.getModel();
         // clear jtable content
         model.setRowCount(0);
-        Object[] row = new Object[3];
+        Object[] row = new Object[5];
         for(int i = 0; i < list.size(); i++)
         {
-            //row[0] = list.get(i).getP_Votes();
-            //row[1] = list.get(i).getQuantity();
+            row[0] = list.get(i).getPvote1();
+            row[1] = list.get(i).getVPvote1();           
+            row[2] = list.get(i).getSecvote1();            
+            row[3] = list.get(i).getTresvote1();            
+            row[4] = list.get(i).getAudvote1();            
             
             model.addRow(row);
         }
+        
+        DefaultTableModel model2 = (DefaultTableModel)tbl_resultsp2.getModel();
+        // clear jtable content
+        model2.setRowCount(0);
+        Object[] row2 = new Object[5];
+        for(int i = 0; i < list.size(); i++)
+        {
+            
+            row2[0] = list.get(i).getPvote2();            
+            row2[1] = list.get(i).getVPvote2();            
+            row2[2] = list.get(i).getSecvote2();            
+            row2[3] = list.get(i).getTresvote2();            
+            row2[4] = list.get(i).getAudvote2();
+            
+            model2.addRow(row2);
+        }
+        
     }
 
     
@@ -219,6 +320,52 @@ public class ViewResults extends javax.swing.JFrame {
         dispose();
         new AdminPanel().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        Connection con = getConnection();
+        
+        try{
+//        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+//                + "pres_vote_1 = 0, pres_vote_2 = 0, "
+//                + "vpres_vote_1 = 0, vpres_vote_2 = 0, "
+//                + "sec_vote_1 = 0, sec_vote_2 = 0, "
+//                + "tres_vote_1 = 0, tres_vote_2 = 0,"
+//                + "aud_vote_1 = 0, aud_vote_2 = 0");
+        
+        PreparedStatement ps3 = con.prepareStatement("DELETE FROM voting_table");
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        showVotes();
+    }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps3 = con.prepareStatement("INSERT INTO voting_table SET "
+                + "pres_vote_1 = 0, pres_vote_2 = 0, "
+                + "vpres_vote_1 = 0, vpres_vote_2 = 0, "
+                + "sec_vote_1 = 0, sec_vote_2 = 0, "
+                + "tres_vote_1 = 0, tres_vote_2 = 0,"
+                + "aud_vote_1 = 0, aud_vote_2 = 0");
+        
+        
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        showVotes();
+    }//GEN-LAST:event_btn_startActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        showVotes();
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,11 +405,16 @@ public class ViewResults extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_reset;
+    private javax.swing.JButton btn_start;
+    private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_results;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tbl_resultsp1;
+    private javax.swing.JTable tbl_resultsp2;
     // End of variables declaration//GEN-END:variables
 }

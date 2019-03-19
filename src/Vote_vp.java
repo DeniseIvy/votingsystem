@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,13 +42,13 @@ public class Vote_vp extends javax.swing.JFrame {
         cp1_name = new javax.swing.JLabel();
         cp1_party = new javax.swing.JLabel();
         cp1_year = new javax.swing.JLabel();
-        cp1_vote_btn = new javax.swing.JButton();
+        cvp1_vote_btn = new javax.swing.JButton();
         cp1_pic1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cp2_name = new javax.swing.JLabel();
         cp2_party = new javax.swing.JLabel();
         cp2_year = new javax.swing.JLabel();
-        cp2_vote = new javax.swing.JButton();
+        cvp2_vote = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,10 +82,10 @@ public class Vote_vp extends javax.swing.JFrame {
         cp1_year.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cp1_year.setText("Year - Course");
 
-        cp1_vote_btn.setText("VOTE");
-        cp1_vote_btn.addActionListener(new java.awt.event.ActionListener() {
+        cvp1_vote_btn.setText("VOTE");
+        cvp1_vote_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cp1_vote_btnActionPerformed(evt);
+                cvp1_vote_btnActionPerformed(evt);
             }
         });
 
@@ -99,10 +108,10 @@ public class Vote_vp extends javax.swing.JFrame {
         cp2_year.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cp2_year.setText("Year - Course");
 
-        cp2_vote.setText("VOTE");
-        cp2_vote.addActionListener(new java.awt.event.ActionListener() {
+        cvp2_vote.setText("VOTE");
+        cvp2_vote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cp2_voteActionPerformed(evt);
+                cvp2_voteActionPerformed(evt);
             }
         });
 
@@ -132,7 +141,7 @@ public class Vote_vp extends javax.swing.JFrame {
                 .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cp1_vote_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cvp1_vote_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(139, 139, 139)
                 .addComponent(p_skip_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +151,7 @@ public class Vote_vp extends javax.swing.JFrame {
                         .addGap(135, 135, 135))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cp2_vote, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cvp2_vote, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(190, 190, 190))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -177,8 +186,8 @@ public class Vote_vp extends javax.swing.JFrame {
                                 .addComponent(cp1_year, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cp1_vote_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cp2_vote, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cvp1_vote_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cvp2_vote, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addComponent(p_separator, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,15 +210,63 @@ public class Vote_vp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
-        dispose();
-            new Vote_sec().setVisible(true);
-    }//GEN-LAST:event_cp1_vote_btnActionPerformed
+    public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
+        String username = "root";
+        String password = "";
+        Connection con = null;
 
-    private void cp2_voteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp2_voteActionPerformed
-         dispose();
-            new Vote_sec().setVisible(true);
-    }//GEN-LAST:event_cp2_voteActionPerformed
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    private void cvp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvp1_vote_btnActionPerformed
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+                + "pres_vote_1 = pres_vote_1 + 0, pres_vote_2 = pres_vote_2 + 0, "
+                + "vpres_vote_1 = vpres_vote_1 + 1, vpres_vote_2 = vpres_vote_2 + 0, "
+                + "sec_vote_1 = sec_vote_1 + 0, sec_vote_2 = sec_vote_2 + 0, "
+                + "tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 0,"
+                + "aud_vote_1 = aud_vote_1 + 0,aud_vote_2 = aud_vote_2 + 0");
+        
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
+        new Vote_sec().setVisible(true);
+    }//GEN-LAST:event_cvp1_vote_btnActionPerformed
+
+    private void cvp2_voteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvp2_voteActionPerformed
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+                + "pres_vote_1 = pres_vote_1 + 0, pres_vote_2 = pres_vote_2 + 0, "
+                + "vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 + 1, "
+                + "sec_vote_1 = sec_vote_1 + 0, sec_vote_2 = sec_vote_2 + 0, "
+                + "tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 0,"
+                + "aud_vote_1 = aud_vote_1 + 0, aud_vote_2 = aud_vote_2 + 0");
+        
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
+        new Vote_sec().setVisible(true);
+    }//GEN-LAST:event_cvp2_voteActionPerformed
 
     private void p_skip_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_skip_btnActionPerformed
         dispose();
@@ -258,12 +315,12 @@ public class Vote_vp extends javax.swing.JFrame {
     private javax.swing.JLabel cp1_name;
     private javax.swing.JLabel cp1_party;
     private javax.swing.JLabel cp1_pic1;
-    private javax.swing.JButton cp1_vote_btn;
     private javax.swing.JLabel cp1_year;
     private javax.swing.JLabel cp2_name;
     private javax.swing.JLabel cp2_party;
-    private javax.swing.JButton cp2_vote;
     private javax.swing.JLabel cp2_year;
+    private javax.swing.JButton cvp1_vote_btn;
+    private javax.swing.JButton cvp2_vote;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator p_separator;

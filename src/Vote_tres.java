@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -201,14 +210,62 @@ public class Vote_tres extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
+        String username = "root";
+        String password = "";
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
     private void cp1_vote_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp1_vote_btnActionPerformed
-       dispose();
-            new ty().setVisible(true);
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+                + "pres_vote_1 = pres_vote_1 + 0, pres_vote_2 = pres_vote_2 + 0, "
+                + "vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 +0, "
+                + "sec_vote_1 = sec_vote_1 + 0, sec_vote_2 = sec_vote_2 + 0, "
+                + "tres_vote_1 = tres_vote_1 + 1, tres_vote_2 = tres_vote_2 + 0,"
+                + "aud_vote_1 = aud_vote_1 + 0, aud_vote_2 = aud_vote_2 + 0");
+        
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
+        new Vote_aud().setVisible(true);
     }//GEN-LAST:event_cp1_vote_btnActionPerformed
 
     private void cp2_voteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cp2_voteActionPerformed
-       dispose();
-            new ty().setVisible(true);
+        Connection con = getConnection();
+        
+        try{
+        PreparedStatement ps3 = con.prepareStatement("UPDATE voting_table SET "
+                + "pres_vote_1 = pres_vote_1 + 0, pres_vote_2 = pres_vote_2 + 0, "
+                + "vpres_vote_1 = vpres_vote_1 + 0, vpres_vote_2 = vpres_vote_2 +0, "
+                + "sec_vote_1 = sec_vote_1 + 0, sec_vote_2 = sec_vote_2 + 0, "
+                + "tres_vote_1 = tres_vote_1 + 0, tres_vote_2 = tres_vote_2 + 1,"
+                + "aud_vote_1 = aud_vote_1 + 0, aud_vote_2 = aud_vote_2 + 0");
+        
+        ps3.executeUpdate();
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
+        new Vote_aud().setVisible(true);
     }//GEN-LAST:event_cp2_voteActionPerformed
 
     private void p_skip_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_skip_btnActionPerformed

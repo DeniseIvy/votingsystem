@@ -71,7 +71,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="cvp1_vote_btn" min="-2" pref="93" max="-2" attributes="0"/>
+                  <Component id="caud1_vote_btn" min="-2" pref="93" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="p_skip_btn" min="-2" pref="141" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -82,7 +82,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cvp2_vote" min="-2" pref="93" max="-2" attributes="0"/>
+                          <Component id="caud2_vote_btn" min="-2" pref="93" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -90,18 +90,16 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="vote_p_lbl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="339" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="434" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="vote_p_lbl" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="cp2_name" min="-2" pref="50" max="-2" attributes="0"/>
@@ -110,8 +108,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cp2_year" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="vote_p_lbl" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="cp1_pic1" min="-2" max="-2" attributes="0"/>
@@ -123,8 +123,8 @@
                                   <Component id="cp1_year" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cvp1_vote_btn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="cvp2_vote" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="caud1_vote_btn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="caud2_vote_btn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -136,7 +136,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace pref="82" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,7 +150,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="VICE PRESIDENT"/>
+            <Property name="text" type="java.lang.String" value="AUDITOR"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="p_separator">
@@ -202,12 +202,12 @@
             <Property name="text" type="java.lang.String" value="Year - Course"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="cvp1_vote_btn">
+        <Component class="javax.swing.JButton" name="caud1_vote_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="VOTE"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvp1_vote_btnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caud1_vote_btnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="cp1_pic1">
@@ -260,12 +260,12 @@
             <Property name="text" type="java.lang.String" value="Year - Course"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="cvp2_vote">
+        <Component class="javax.swing.JButton" name="caud2_vote_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="VOTE"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvp2_voteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caud2_vote_btnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
