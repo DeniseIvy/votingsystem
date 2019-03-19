@@ -58,7 +58,6 @@ public class ManageCandidate extends javax.swing.JFrame {
         btn_addimg = new javax.swing.JButton();
         txt_party = new javax.swing.JTextField();
         btn_back = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -81,7 +80,7 @@ public class ManageCandidate extends javax.swing.JFrame {
         txt_name.setForeground(new java.awt.Color(255, 255, 255));
         txt_name.setBorder(null);
 
-        cb_pos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PRESIDENT", "VICE-PRESIDENT", "SECRETARY", "TREASURER", "AUDITOR" }));
+        cb_pos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "President", "Vice President", "Secretary", "Treasurer", "Auditor" }));
         cb_pos.setToolTipText("Select Position");
         cb_pos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,13 +137,9 @@ public class ManageCandidate extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(133, 156, 191));
-        jButton2.setText("EDIT");
-
         jButton3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(133, 156, 191));
-        jButton3.setText("DELETE");
+        jButton3.setText("DELETE ALL");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -156,6 +151,10 @@ public class ManageCandidate extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_back)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
@@ -164,22 +163,18 @@ public class ManageCandidate extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_add)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(txt_name)
                     .addComponent(txt_yc)
                     .addComponent(cb_pos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_party, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2)
-                    .addComponent(jSeparator3))
+                    .addComponent(jSeparator3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 40, Short.MAX_VALUE))
+                    .addComponent(btn_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
@@ -188,10 +183,6 @@ public class ManageCandidate extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_addimg)
                         .addGap(134, 134, 134))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_back)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,17 +213,17 @@ public class ManageCandidate extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(cb_pos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(181, 181, 181)
-                        .addComponent(btn_back))
+                        .addGap(81, 81, 81))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(imagehandler, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_addimg)
-                            .addComponent(btn_add)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))))
+                            .addComponent(btn_add))))
+                .addComponent(jButton3)
+                .addGap(63, 63, 63)
+                .addComponent(btn_back)
                 .addContainerGap())
         );
 
@@ -297,7 +288,16 @@ public class ManageCandidate extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        Connection con = getConnection();
+        
+        try{
+        
+        PreparedStatement ps3 = con.prepareStatement("DELETE FROM candidates_table");
+        ps3.executeUpdate();
+        JOptionPane.showMessageDialog(null, "All Candidates Deleted");
+        }catch(SQLException ex) {
+            Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public Connection getConnection(){
@@ -391,7 +391,6 @@ public class ManageCandidate extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JComboBox cb_pos;
     private javax.swing.JLabel imagehandler;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

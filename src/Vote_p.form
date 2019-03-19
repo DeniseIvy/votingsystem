@@ -47,7 +47,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="cp1_pic1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cp1_pic" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -65,7 +65,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="cp2_party" max="32767" attributes="0"/>
                       <Component id="cp2_name" min="-2" pref="236" max="-2" attributes="0"/>
-                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Component id="cp2_pic" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="135" max="32767" attributes="0"/>
               </Group>
@@ -100,7 +100,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cp2_pic" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="cp2_name" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -114,7 +114,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cp1_pic1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cp1_pic" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="cp1_name" min="-2" pref="65" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -210,14 +210,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cp1_vote_btnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="cp1_pic1">
+        <Component class="javax.swing.JLabel" name="cp1_pic">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/placeholder.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="cp2_pic">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/placeholder.png"/>

@@ -56,9 +56,7 @@ public class Database {
         this.picture = pimg;
     }
 
-    public String getPName() {
-        return pres_names;
-    }
+    
     
     public int getPvote1() {
         return pres_vote_1;
