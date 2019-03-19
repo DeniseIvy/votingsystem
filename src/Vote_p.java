@@ -212,7 +212,7 @@ public class Vote_p extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3307/voting_db";
+        String url = "jdbc:mysql://localhost:3306/voting_db";
         String username = "root";
         String password = "";
         Connection con = null;
@@ -232,17 +232,14 @@ public class Vote_p extends javax.swing.JFrame {
         Connection con = getConnection();
         
         try{
-        PreparedStatement ps1 = con.prepareStatement("SELECT name FROM voting_tbl WHERE name = ?");
-        ps1.setString(1,vote);
-        ResultSet rs = ps1.executeQuery();
-        
-        PreparedStatement ps3 = con.prepareStatement("UPDATE menu_tbl SET quantity = quantity + 1, price = price + 120 WHERE name = ? and quantity > -1");
+        PreparedStatement ps3 = con.prepareStatement("INSERT INTO voting_tbl SET pres_vote_1 = pres_vote_1 + 1");
         ps3.setString(1, vote);
         ps3.executeUpdate();
         
         }catch(SQLException ex) {
             Logger.getLogger(Vote_p.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
         
         dispose();

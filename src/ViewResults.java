@@ -1,3 +1,15 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,7 +41,7 @@ public class ViewResults extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_results = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
@@ -42,8 +54,8 @@ public class ViewResults extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RESULTS");
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_results.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tbl_results.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null}
@@ -67,8 +79,8 @@ public class ViewResults extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setRowHeight(40);
-        jScrollPane1.setViewportView(jTable1);
+        tbl_results.setRowHeight(40);
+        jScrollPane1.setViewportView(tbl_results);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,6 +155,66 @@ public class ViewResults extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3306/voting_db";
+        String username = "root";
+        String password = "";
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    public ArrayList<Database> getList(){
+            ArrayList<Database> List  = new ArrayList<Database>();
+            Connection con = getConnection();
+            String query = "SELECT * FROM menu_tbl";
+
+            Statement st;
+            ResultSet rs;
+
+        try {
+
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            Database records;
+
+            while(rs.next()){
+                //records = new Database(rs.getString("name"),Float.parseFloat(rs.getString("price")),rs.getInt("quantity"));
+                //List.add(records);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return List;
+
+    } 
+    
+    public void showVotes(){
+        ArrayList<Database> list = getList();
+        DefaultTableModel model = (DefaultTableModel)tbl_results.getModel();
+        // clear jtable content
+        model.setRowCount(0);
+        Object[] row = new Object[3];
+        for(int i = 0; i < list.size(); i++)
+        {
+            //row[0] = list.get(i).getP_Votes();
+            //row[1] = list.get(i).getQuantity();
+            
+            model.addRow(row);
+        }
+    }
+
+    
+    
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         dispose();
         new AdminPanel().setVisible(true);
@@ -191,6 +263,6 @@ public class ViewResults extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl_results;
     // End of variables declaration//GEN-END:variables
 }

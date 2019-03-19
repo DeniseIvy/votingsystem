@@ -178,13 +178,14 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
-                <StringItem index="0" value="POSITION"/>
-                <StringItem index="1" value="PRESIDENT"/>
-                <StringItem index="2" value="VICE-PRESIDENT"/>
-                <StringItem index="3" value="SECRETARY"/>
-                <StringItem index="4" value="TREASURER"/>
+                <StringItem index="0" value="PRESIDENT"/>
+                <StringItem index="1" value="VICE-PRESIDENT"/>
+                <StringItem index="2" value="SECRETARY"/>
+                <StringItem index="3" value="TREASURER"/>
+                <StringItem index="4" value="AUDITOR"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Select Position"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_posActionPerformed"/>
