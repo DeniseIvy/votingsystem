@@ -102,18 +102,20 @@ public class Vote_p extends javax.swing.JFrame {
         
         for(int i = 0; i < list.size(); i++)
         {
-            if(temp[i][3] == "President"){
+            String lower = temp[i][3].toLowerCase();
+            System.out.println("lowercase: "+lower);
+            if(lower == "auditor"){
                 retrieve[i][0] = temp[i][0];
                 retrieve[i][1] = temp[i][1];           
                 retrieve[i][2] = temp[i][2];            
                 retrieve[i][3] = temp[i][3];            
                 retrieve[i][4] = temp[i][4];
             } else {
-                retrieve[i][0] = temp[i][0];
-                retrieve[i][1] = temp[i][1];           
-                retrieve[i][2] = temp[i][2];            
-                retrieve[i][3] = temp[i][3];            
-                retrieve[i][4] = temp[i][4];
+//                retrieve[i][0] = temp[i][0];
+//                retrieve[i][1] = temp[i][1];           
+//                retrieve[i][2] = temp[i][2];            
+//                retrieve[i][3] = temp[i][3];            
+//                retrieve[i][4] = temp[i][4];
             }
             
             
@@ -151,7 +153,7 @@ public class Vote_p extends javax.swing.JFrame {
         cp1_year.setText(retrieve[0][1]);
         cp1_party.setText(retrieve[0][2]);
 
-        //cp1_pic.setIcon(ResizeImage(null, ));
+        cp1_pic.setIcon(ResizeImage(null, tempimg));
     }
 
     /**
