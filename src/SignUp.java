@@ -1,5 +1,11 @@
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -35,7 +41,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lbl_user = new javax.swing.JLabel();
-        usernamef = new javax.swing.JTextField();
+        idnumf = new javax.swing.JTextField();
         lbl_pass = new javax.swing.JLabel();
         passwordf = new javax.swing.JPasswordField();
         signupb = new javax.swing.JButton();
@@ -62,21 +68,21 @@ public class SignUp extends javax.swing.JFrame {
         lbl_user.setForeground(new java.awt.Color(51, 51, 51));
         lbl_user.setText("ID NUMBER");
 
-        usernamef.setBackground(new java.awt.Color(72, 99, 142));
-        usernamef.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        usernamef.setForeground(new java.awt.Color(255, 255, 255));
-        usernamef.setBorder(null);
-        usernamef.addFocusListener(new java.awt.event.FocusAdapter() {
+        idnumf.setBackground(new java.awt.Color(72, 99, 142));
+        idnumf.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        idnumf.setForeground(new java.awt.Color(255, 255, 255));
+        idnumf.setBorder(null);
+        idnumf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                usernamefFocusGained(evt);
+                idnumfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                usernamefFocusLost(evt);
+                idnumfFocusLost(evt);
             }
         });
-        usernamef.addActionListener(new java.awt.event.ActionListener() {
+        idnumf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernamefActionPerformed(evt);
+                idnumfActionPerformed(evt);
             }
         });
 
@@ -156,7 +162,7 @@ public class SignUp extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbl_pass)
                         .addComponent(lbl_user)
-                        .addComponent(usernamef, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                        .addComponent(idnumf, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                         .addComponent(jSeparator1)
                         .addComponent(passwordf)
                         .addComponent(jSeparator2)))
@@ -180,7 +186,7 @@ public class SignUp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_user, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idnumf, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -237,9 +243,9 @@ public class SignUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernamefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefActionPerformed
+    private void idnumfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idnumfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernamefActionPerformed
+    }//GEN-LAST:event_idnumfActionPerformed
 
     private void passwordfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordfActionPerformed
         // TODO add your handling code here:
@@ -255,15 +261,15 @@ public class SignUp extends javax.swing.JFrame {
         jSeparator2.setBackground(new Color(33,33,33));
     }//GEN-LAST:event_passwordfFocusLost
 
-    private void usernamefFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefFocusGained
+    private void idnumfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idnumfFocusGained
         lbl_user.setForeground(new Color(240,240,240));
         jSeparator1.setBackground(new Color(149,165,166));
-    }//GEN-LAST:event_usernamefFocusGained
+    }//GEN-LAST:event_idnumfFocusGained
 
-    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefFocusLost
+    private void idnumfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idnumfFocusLost
         lbl_user.setForeground(new Color(33,33,33));
         jSeparator1.setBackground(new Color(33,33,33));
-    }//GEN-LAST:event_usernamefFocusLost
+    }//GEN-LAST:event_idnumfFocusLost
 
     private void namefFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namefFocusGained
         lbl_name.setForeground(new Color(240,240,240));
@@ -279,21 +285,108 @@ public class SignUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_namefActionPerformed
 
+     public Connection getConnection(){
+        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
+        String username = "root";
+        String password = "";
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url,username,password);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+     /*public boolean checkUsername(String username)
+     {
+         PreparedStatement ps;
+         ResultSet rs;
+         boolean checkUser = false;
+         String query ="SELECT *FROM `accounts_table` WHERE `username`=?";
+         
+         try{
+              Connection con = getConnection();
+              ps = con.prepareStatement(query);
+              
+              rs = ps.executeQuery();
+              
+              if(rs.next()){
+                  checkUser = true;
+              }
+         }catch (SQLException ex){
+             Logger.getLogger(SignUp.class.getName()).log(Level,SEVERE,null,ex);
+         }
+         return checkUser;
+     }*/
+ 
     private void signupbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbActionPerformed
         
-        if (namef.getText().trim().isEmpty() || usernamef.getText().trim().isEmpty() || passwordf.getText().trim().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Incomplete Info.");
+        String name = namef.getText();
+        String idnumber = idnumf.getText();
+        String username = namef.getText();
+        String password = String.valueOf(passwordf.getPassword());
+        
+        if(name.equals("")){
+            JOptionPane.showMessageDialog(null,"Add Name");
         }
-        else 
+        
+        else if(password.equals("")){
+            JOptionPane.showMessageDialog(null,"Add Password");
+        }
+        
+        PreparedStatement ps;
+        String query = "INSERT INTO `accounts_table`(`name`,`idnumber`,`username`,`password`) VALUES (?,?,?,?)";
+        
+        try{
+            Connection con = getConnection();
+            ps = con.prepareStatement(query);
+            
+            ps.setString(1, name);
+            ps.setString(2, idnumber);
+            ps.setString(3, username);
+            ps.setString(4, password);
+            
+            if(ps.executeUpdate()>0)
+            {
+                JOptionPane.showMessageDialog(null, "Add");
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,ex);
+        }
+    }
+}
+        /*if (namef.getText() != null || idnumf.getText() != null || passwordf.getText() != null )
+        {
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement("INSERT INTO accounts_table(name,username,password)"
+                        + "values(?,?,?,?,?) ");
+                ps.setString(1, namef.getText());
+                ps.setString(2, idnumf.getText());
+                ps.setString(3, passwordf.getText());*/
+            /*JOptionPane.showMessageDialog(null,"Incomplete Info.");*/
+             /*JOptionPane.showMessageDialog(null, "Added!");
+             dispose();
+            new Login().setVisible(true);
+            } catch (Exception ex) {
+                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "hallo");*/
+        
+        /*else 
         {
            JOptionPane.showMessageDialog(null,"Sign up success!");
            namef.setText(null);
-           usernamef.setText(null);
+           idnumf.setText(null);
            passwordf.setText(null);
            dispose();
            new Login().setVisible(true);
-        }
+        }*/
+        
     }//GEN-LAST:event_signupbActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -339,6 +432,7 @@ public class SignUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JTextField idnumf;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
@@ -352,6 +446,5 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField namef;
     private javax.swing.JPasswordField passwordf;
     private javax.swing.JButton signupb;
-    private javax.swing.JTextField usernamef;
     // End of variables declaration//GEN-END:variables
 }
