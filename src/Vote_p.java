@@ -25,13 +25,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Vote_p extends javax.swing.JFrame {
 
-    public String[][] temp = new String[10][5];
+    public Vote_p() {
+        initComponents();
+        retrieveData();
+        Replace();
+        
+    }
+    
     public String[][] retrieve = new String[10][5];
     public byte[] tempimg, tempimg2;
     
-    /**
-     * Creates new form vote
-     */
     public Connection getConnection(){
         String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
         String username = "root";
@@ -46,13 +49,6 @@ public class Vote_p extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
             return null;
         }
-    }
-    
-    public Vote_p() {
-        initComponents();
-        retrieveData();
-        Replace();
-        
     }
     
     public ArrayList<CandidateDB> getList(){
@@ -85,40 +81,24 @@ public class Vote_p extends javax.swing.JFrame {
     public void retrieveData(){
         ArrayList<CandidateDB> list = getList();
         
+        tempimg = list.get(0).getImg();
+        tempimg2 = list.get(1).getImg();
+        
         for(int i = 0; i < list.size(); i++)
         {
-            temp[i][0] = list.get(i).getName();
-            temp[i][1] = list.get(i).getYearCourse();           
-            temp[i][2] = list.get(i).getParty();            
-            temp[i][3] = list.get(i).getPosition();            
-            tempimg = list.get(1).getImg();
-            tempimg2 = list.get(2).getImg();
+            retrieve[i][0] = list.get(i).getName();
+            retrieve[i][1] = list.get(i).getYearCourse();           
+            retrieve[i][2] = list.get(i).getParty();            
+            retrieve[i][3] = list.get(i).getPosition();            
             
-            System.out.println(temp[i][0]);
-            System.out.println(temp[i][1]);
-            System.out.println(temp[i][2]);
-            System.out.println(temp[i][3]);
+            
+            System.out.println(retrieve[i][0]);
+            System.out.println(retrieve[i][1]);
+            System.out.println(retrieve[i][2]);
+            System.out.println(retrieve[i][3]);
             System.out.println("\n1st pic: " + tempimg);
             System.out.println("2nd pic: " + tempimg2);
         }
-        
-//        for(int i = 0; i < list.size(); i++)
-//        {
-//            String lower = temp[i][3].toLowerCase();
-//            System.out.println("lowercase: "+lower);
-//            
-//            retrieve[i][0] = temp[i][0];
-//            retrieve[i][1] = temp[i][1];           
-//            retrieve[i][2] = temp[i][2];            
-//            retrieve[i][3] = temp[i][3];            
-//            retrieve[i][4] = temp[i][4];
-//
-//            System.out.println(retrieve[i][0]);
-//            System.out.println(retrieve[i][1]);
-//            System.out.println(retrieve[i][2]);
-//            System.out.println(retrieve[i][3]);
-//            System.out.println(retrieve[i][4]);
-//        }
         
     }
 

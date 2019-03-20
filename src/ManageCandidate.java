@@ -318,7 +318,7 @@ public class ManageCandidate extends javax.swing.JFrame {
     
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         
-        if(txt_name.getText() != null || txt_yc.getText() != null  || txt_party.getText() != null  && ImgPath != null)
+        if(txt_name.getText() != null && txt_yc.getText() != null  && txt_party.getText() != null  && ImgPath != null)
         {
             try {
                 Connection con = getConnection();
@@ -336,22 +336,32 @@ public class ManageCandidate extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(null, "Candidate Added");
                 
+                System.out.println("Name: " + txt_name.getText());
+                System.out.println("Year: " + txt_yc.getText());
+                System.out.println("Party: " + txt_party.getText());
+                System.out.println("Position: " + cb_pos.getSelectedItem().toString());
+                System.out.println("ImagePath: " + ImgPath);
+
                 txt_name.setText(null);
                 txt_yc.setText(null);
                 txt_party.setText(null);
-                imagehandler.setText(null);
+                ImgPath = null;
+                imagehandler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/placeholder.png")));
+                
             } catch (Exception ex) {
-                 JOptionPane.showMessageDialog(null, ex.getMessage());
+                txt_name.setText(null);
+                txt_yc.setText(null);
+                txt_party.setText(null);
+                ImgPath = null;
+                System.out.println("Error: " + "Field Empty.");
+                System.out.println("Error: " + ex.getMessage());
             }
         }else{
+            System.out.println("Error: " + "Field Empty.");
             JOptionPane.showMessageDialog(null, "One Or More Field Are Empty");
         }
         
-        System.out.println("Name: " + txt_name.getText());
-        System.out.println("Year: " + txt_yc.getText());
-        System.out.println("Party: " + txt_party.getText());
-        System.out.println("Position: " + cb_pos.getSelectedItem().toString());
-        System.out.println("ImagePath: " + ImgPath);
+        
     }//GEN-LAST:event_btn_addActionPerformed
 
     /**
