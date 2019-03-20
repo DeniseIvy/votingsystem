@@ -129,8 +129,8 @@
                               <Component id="idnumf" pref="321" max="32767" attributes="0"/>
                               <Component id="jSeparator1" max="32767" attributes="0"/>
                               <Component id="lbl_username" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="passwordf1" alignment="0" max="32767" attributes="0"/>
                               <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
+                              <Component id="usernamef" alignment="0" pref="321" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
@@ -155,8 +155,8 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_username" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="passwordf1" min="-2" pref="41" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="usernamef" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_pass" min="-2" max="-2" attributes="0"/>
@@ -168,7 +168,7 @@
                       <Component id="signupb" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_back" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="72" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -315,7 +315,9 @@
                 <Property name="text" type="java.lang.String" value="USERNAME"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="passwordf1">
+            <Component class="javax.swing.JSeparator" name="jSeparator4">
+            </Component>
+            <Component class="javax.swing.JTextField" name="usernamef">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="8e" green="63" red="48" type="rgb"/>
@@ -331,12 +333,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passwordf1FocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passwordf1FocusLost"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordf1ActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="usernamefFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="usernamefFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernamefActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator4">
             </Component>
           </SubComponents>
         </Container>
