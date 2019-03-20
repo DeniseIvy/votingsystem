@@ -2,7 +2,11 @@
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,11 +28,12 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         startAll();
+        //RetrieveAccount("HalikNiHudas","1234");
     }
     
     public void startAll(){
         initComponents();
-        getConnection();
+        
     }   
     
     public Connection getConnection(){
@@ -48,6 +53,34 @@ public class Login extends javax.swing.JFrame {
             return null;
         }
     }
+    
+    
+    
+    public boolean Authentication(String username, String password){
+        
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM accounts_table WHERE username=? AND password=?";
+        
+        try {
+            Connection con = getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("Matched!");
+                return true;                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -236,7 +269,7 @@ public class Login extends javax.swing.JFrame {
 
     private void loginbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbActionPerformed
         String username = usernamef.getText();
-        String password = passwordf.getText();
+        String password = String.valueOf(passwordf.getPassword());
         
         
         if (username.equals("admin")&& password.equals("1234"))
@@ -245,7 +278,8 @@ public class Login extends javax.swing.JFrame {
             dispose();
             new AdminPanel().setVisible(true);
         }
-        else if (username.equals("user1")&& password.equals("1234"))
+        //else if (username.equals("user1")&& password.equals("1234"))
+        else if(Authentication(username,password) == true)
         {
             JOptionPane.showMessageDialog(null,"Login Successful");
             dispose();
