@@ -27,7 +27,7 @@ public class Vote_p extends javax.swing.JFrame {
 
     public String[][] temp = new String[10][5];
     public String[][] retrieve = new String[10][5];
-    public byte[] tempimg;
+    public byte[] tempimg, tempimg2;
     
     /**
      * Creates new form vote
@@ -58,7 +58,7 @@ public class Vote_p extends javax.swing.JFrame {
     public ArrayList<CandidateDB> getList(){
             ArrayList<CandidateDB> List  = new ArrayList<CandidateDB>();
             Connection con = getConnection();
-            String query = "SELECT * FROM candidates_table";
+            String query = "SELECT * FROM candidates_table WHERE position='president'";
 
             Statement st;
             ResultSet rs;
@@ -91,40 +91,34 @@ public class Vote_p extends javax.swing.JFrame {
             temp[i][1] = list.get(i).getYearCourse();           
             temp[i][2] = list.get(i).getParty();            
             temp[i][3] = list.get(i).getPosition();            
-            tempimg = list.get(i).getImg();
+            tempimg = list.get(1).getImg();
+            tempimg2 = list.get(2).getImg();
             
             System.out.println(temp[i][0]);
             System.out.println(temp[i][1]);
             System.out.println(temp[i][2]);
             System.out.println(temp[i][3]);
-            System.out.println(tempimg);
+            System.out.println("\n1st pic: " + tempimg);
+            System.out.println("2nd pic: " + tempimg2);
         }
         
-        for(int i = 0; i < list.size(); i++)
-        {
-            String lower = temp[i][3].toLowerCase();
-            System.out.println("lowercase: "+lower);
-            if(lower == "auditor"){
-                retrieve[i][0] = temp[i][0];
-                retrieve[i][1] = temp[i][1];           
-                retrieve[i][2] = temp[i][2];            
-                retrieve[i][3] = temp[i][3];            
-                retrieve[i][4] = temp[i][4];
-            } else {
-//                retrieve[i][0] = temp[i][0];
-//                retrieve[i][1] = temp[i][1];           
-//                retrieve[i][2] = temp[i][2];            
-//                retrieve[i][3] = temp[i][3];            
-//                retrieve[i][4] = temp[i][4];
-            }
-            
-            
-            System.out.println(retrieve[i][0]);
-            System.out.println(retrieve[i][1]);
-            System.out.println(retrieve[i][2]);
-            System.out.println(retrieve[i][3]);
-            System.out.println(retrieve[i][4]);
-        }
+//        for(int i = 0; i < list.size(); i++)
+//        {
+//            String lower = temp[i][3].toLowerCase();
+//            System.out.println("lowercase: "+lower);
+//            
+//            retrieve[i][0] = temp[i][0];
+//            retrieve[i][1] = temp[i][1];           
+//            retrieve[i][2] = temp[i][2];            
+//            retrieve[i][3] = temp[i][3];            
+//            retrieve[i][4] = temp[i][4];
+//
+//            System.out.println(retrieve[i][0]);
+//            System.out.println(retrieve[i][1]);
+//            System.out.println(retrieve[i][2]);
+//            System.out.println(retrieve[i][3]);
+//            System.out.println(retrieve[i][4]);
+//        }
         
     }
 
@@ -144,16 +138,18 @@ public class Vote_p extends javax.swing.JFrame {
 
     }
     
-    public void Replace(){
-        String imgstring = retrieve[0][4];
-       
-        
-        
+    public void Replace(){  
+        //Changes The Left Side
         cp1_name.setText(retrieve[0][0]);
         cp1_year.setText(retrieve[0][1]);
         cp1_party.setText(retrieve[0][2]);
-
         cp1_pic.setIcon(ResizeImage(null, tempimg));
+        
+        //Changes The Right Side
+        cp2_name.setText(retrieve[1][0]);
+        cp2_year.setText(retrieve[1][1]);
+        cp2_party.setText(retrieve[1][2]);
+        cp2_pic.setIcon(ResizeImage(null, tempimg2));
     }
 
     /**
