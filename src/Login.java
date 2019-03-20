@@ -245,7 +245,7 @@ public class Login extends javax.swing.JFrame {
             dispose();
             new AdminPanel().setVisible(true);
         }
-        else if (username.equals("")&& password.equals(""))
+        else if (username.equals("user1")&& password.equals("1234"))
         {
             JOptionPane.showMessageDialog(null,"Login Successful");
             dispose();

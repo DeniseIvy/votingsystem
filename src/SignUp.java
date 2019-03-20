@@ -410,10 +410,15 @@ public class SignUp extends javax.swing.JFrame {
                 ps.setString(2, idnumber);
                 ps.setString(3, username);
                 ps.setString(4, password);
-
-                if (ps.executeUpdate() > 0) {
-                    JOptionPane.showMessageDialog(null, "Add");
-                }
+                
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(null, "Sign up Success!");
+                namef.setText(null);
+                idnumf.setText(null);
+                usernamef.setText(null);
+                passwordf.setText(null);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
             }

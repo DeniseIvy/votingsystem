@@ -335,6 +335,11 @@ public class ManageCandidate extends javax.swing.JFrame {
                 ps.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Candidate Added");
+                
+                txt_name.setText(null);
+                txt_yc.setText(null);
+                txt_party.setText(null);
+                imagehandler.setText(null);
             } catch (Exception ex) {
                  JOptionPane.showMessageDialog(null, ex.getMessage());
             }
