@@ -54,11 +54,6 @@ public class SignUp extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         btn_back = new javax.swing.JButton();
         lbl_username = new javax.swing.JLabel();
-<<<<<<< Updated upstream
-=======
-        usernamef = new javax.swing.JPasswordField();
-
->>>>>>> Stashed changes
         jSeparator4 = new javax.swing.JSeparator();
         usernamef = new javax.swing.JTextField();
 
@@ -207,13 +202,8 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(idnumf, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                         .addComponent(jSeparator1)
                         .addComponent(lbl_username)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(usernamef, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)))
-<<<<<<< Updated upstream
-=======
                         .addComponent(usernamef)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)))
->>>>>>> Stashed changes
                 .addGap(122, 122, 122))
         );
         jPanel4Layout.setVerticalGroup(
@@ -234,17 +224,8 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbl_username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-<<<<<<< Updated upstream
                 .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-=======
-<<<<<<< Updated upstream
-                .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-
-                .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
->>>>>>> Stashed changes
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_pass)
@@ -300,152 +281,128 @@ public class SignUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idnumfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idnumfActionPerformed
+    private void idnumfActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_idnumfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idnumfActionPerformed
+    }// GEN-LAST:event_idnumfActionPerformed
 
-    private void passwordfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordfActionPerformed
+    private void passwordfActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_passwordfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordfActionPerformed
+    }// GEN-LAST:event_passwordfActionPerformed
 
-    private void passwordfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordfFocusGained
-        lbl_pass.setForeground(new Color(240,240,240));
-        jSeparator2.setBackground(new Color(149,165,166));
-    }//GEN-LAST:event_passwordfFocusGained
+    private void passwordfFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_passwordfFocusGained
+        lbl_pass.setForeground(new Color(240, 240, 240));
+        jSeparator2.setBackground(new Color(149, 165, 166));
+    }// GEN-LAST:event_passwordfFocusGained
 
-    private void passwordfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordfFocusLost
-        lbl_pass.setForeground(new Color(33,33,33));
-        jSeparator2.setBackground(new Color(33,33,33));
-    }//GEN-LAST:event_passwordfFocusLost
+    private void passwordfFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_passwordfFocusLost
+        lbl_pass.setForeground(new Color(33, 33, 33));
+        jSeparator2.setBackground(new Color(33, 33, 33));
+    }// GEN-LAST:event_passwordfFocusLost
 
-    private void idnumfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idnumfFocusGained
-        lbl_user.setForeground(new Color(240,240,240));
-        jSeparator1.setBackground(new Color(149,165,166));
-    }//GEN-LAST:event_idnumfFocusGained
+    private void idnumfFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_idnumfFocusGained
+        lbl_user.setForeground(new Color(240, 240, 240));
+        jSeparator1.setBackground(new Color(149, 165, 166));
+    }// GEN-LAST:event_idnumfFocusGained
 
-    private void idnumfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idnumfFocusLost
-        lbl_user.setForeground(new Color(33,33,33));
-        jSeparator1.setBackground(new Color(33,33,33));
-    }//GEN-LAST:event_idnumfFocusLost
+    private void idnumfFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_idnumfFocusLost
+        lbl_user.setForeground(new Color(33, 33, 33));
+        jSeparator1.setBackground(new Color(33, 33, 33));
+    }// GEN-LAST:event_idnumfFocusLost
 
-    private void namefFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namefFocusGained
-        lbl_name.setForeground(new Color(240,240,240));
-        jSeparator3.setBackground(new Color(149,165,166));
-    }//GEN-LAST:event_namefFocusGained
+    private void namefFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_namefFocusGained
+        lbl_name.setForeground(new Color(240, 240, 240));
+        jSeparator3.setBackground(new Color(149, 165, 166));
+    }// GEN-LAST:event_namefFocusGained
 
-    private void namefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namefFocusLost
-        lbl_name.setForeground(new Color(33,33,33));
-        jSeparator3.setBackground(new Color(33,33,33));
-    }//GEN-LAST:event_namefFocusLost
+    private void namefFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_namefFocusLost
+        lbl_name.setForeground(new Color(33, 33, 33));
+        jSeparator3.setBackground(new Color(33, 33, 33));
+    }// GEN-LAST:event_namefFocusLost
 
-    private void namefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namefActionPerformed
+    private void namefActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_namefActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_namefActionPerformed
+    }// GEN-LAST:event_namefActionPerformed
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
         String username = "root";
         String password = "";
         Connection con = null;
 
         try {
-            con = DriverManager.getConnection(url,username,password);
+            con = DriverManager.getConnection(url, username, password);
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Not Connected.","Connection Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Not Connected.", "Connection Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
-     
-    public boolean checkUsername(String username)
-    {
+
+    public boolean checkUsername(String username) {
         PreparedStatement ps;
         ResultSet rs;
         boolean checkUser = false;
-        String query ="SELECT username FROM accounts_table WHERE username=?";
+        String query = "SELECT username FROM accounts_table WHERE username=?";
 
-        try{
-             Connection con = getConnection();
-             ps = con.prepareStatement(query);
-             ps.setString(1, username);
-             
-             rs = ps.executeQuery();
+        try {
+            Connection con = getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, username);
 
-             if(rs.next()){
-                 checkUser = true;
-             }
-        }catch (SQLException ex){
-            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,ex);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                checkUser = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return checkUser;
     }
-    
-    public boolean checkID(String idnumber)
-    {
+
+    public boolean checkID(String idnumber) {
         PreparedStatement ps;
         ResultSet rs;
         boolean checkUser = false;
-        String query ="SELECT idnumber FROM accounts_table WHERE idnumber=?";
+        String query = "SELECT idnumber FROM accounts_table WHERE idnumber=?";
 
-        try{
-             Connection con = getConnection();
-             ps = con.prepareStatement(query);
-             ps.setString(1, idnumber);
-             rs = ps.executeQuery();
+        try {
+            Connection con = getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, idnumber);
+            rs = ps.executeQuery();
 
-             if(rs.next()){
-                 checkUser = true;
-             }
-        }catch (SQLException ex){
-            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,ex);
+            if (rs.next()) {
+                checkUser = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return checkUser;
     }
- 
-    private void signupbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbActionPerformed
-        
+
+    private void signupbActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_signupbActionPerformed
+
         String name = namef.getText();
         String idnumber = idnumf.getText();
         String username = usernamef.getText();
         String password = String.valueOf(passwordf.getPassword());
-        
-        
-        if(namef.getText().isEmpty() || idnumf.getText().isEmpty() || usernamef.getText().isEmpty() || passwordf.getPassword().length == 0) {
-            JOptionPane.showMessageDialog(null,"Incomplete Info.");
-        } else if(checkUsername(username) == true){
-            JOptionPane.showMessageDialog(null,"Existing Username.");
-        } else if(checkUsername(idnumber) == true){
-            JOptionPane.showMessageDialog(null,"Existing ID Number.");
-        } else if(password.equals("")){
-            JOptionPane.showMessageDialog(null,"Add Password");
-        }else {
+
+        if (namef.getText().isEmpty() || idnumf.getText().isEmpty() || usernamef.getText().isEmpty()
+                || passwordf.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(null, "Incomplete Info.");
+        } else if (checkUsername(username) == true) {
+            JOptionPane.showMessageDialog(null, "Existing Username.");
+        } else if (checkUsername(idnumber) == true) {
+            JOptionPane.showMessageDialog(null, "Existing ID Number.");
+        } else if (password.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add Password");
+        } else {
             PreparedStatement ps;
             String query = "INSERT INTO accounts_table(name,idnumber,username,password) VALUES (?,?,?,?)";
-            
-        try{
-            Connection con = getConnection();
-            ps = con.prepareStatement(query);
-            
-            ps.setString(1, name);
-            ps.setString(2, idnumber);
-            ps.setString(3, username);
-            ps.setString(4, password);
-            
-            if(ps.executeUpdate()>0)
-            {
-                JOptionPane.showMessageDialog(null, "Add");
-            }
-        }catch(SQLException ex){
-            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,ex);
-        }
-            }
-   // }
-//}
-        /*if (namef.getText() != null || idnumf.getText() != null || passwordf.getText() != null )
-        {
+
             try {
->>>>>>> Stashed changes
                 Connection con = getConnection();
                 ps = con.prepareStatement(query);
 
@@ -454,58 +411,46 @@ public class SignUp extends javax.swing.JFrame {
                 ps.setString(3, username);
                 ps.setString(4, password);
 
-                ps.executeUpdate();
-                
-                JOptionPane.showMessageDialog(null, "Sign up Success!");
-                namef.setText(null);
-                idnumf.setText(null);
-                usernamef.setText(null);
-                passwordf.setText(null);
-            }catch(SQLException ex){
-                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,ex);
+                if (ps.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Add");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }       
-    }//GEN-LAST:event_signupbActionPerformed
+        }
+    }// GEN-LAST:event_signupbActionPerformed
 
-    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_backActionPerformed
         dispose();
         new Login().setVisible(true);
-    }//GEN-LAST:event_btn_backActionPerformed
+    }// GEN-LAST:event_btn_backActionPerformed
 
-    private void usernamefFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefFocusGained
-        lbl_username.setForeground(new Color(240,240,240));
-        jSeparator4.setBackground(new Color(149,165,166));
-    }//GEN-LAST:event_usernamefFocusGained
+    private void usernamefFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_usernamefFocusGained
+        lbl_username.setForeground(new Color(240, 240, 240));
+        jSeparator4.setBackground(new Color(149, 165, 166));
+    }// GEN-LAST:event_usernamefFocusGained
 
+    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {
+        lbl_username.setForeground(new Color(33, 33, 33));
+        jSeparator4.setBackground(new Color(33, 33, 33));
+    }
 
-    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {                                    
-        lbl_username.setForeground(new Color(33,33,33));
-        jSeparator4.setBackground(new Color(33,33,33));
-
-    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {                                    
-        lbl_username.setForeground(new Color(33,33,33));
-        jSeparator4.setBackground(new Color(33,33,33));
-
+    private void usernamefActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_usernamefActionPerformed
         // TODO add your handling code here:
-    }                                     
-
-    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernamefFocusLost
-
-    private void usernamefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernamefActionPerformed
+    }// GEN-LAST:event_usernamefActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        //If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         //For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-       
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        // If Nimbus (introduced in Java SE 6) is not available, stay with the default
+        // look and feel.
+        // For details see
+        // http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -522,8 +467,8 @@ public class SignUp extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+        // </editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
