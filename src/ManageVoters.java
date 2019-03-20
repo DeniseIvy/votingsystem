@@ -2,10 +2,14 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,6 +28,7 @@ public class ManageVoters extends javax.swing.JFrame {
      */
     public ManageVoters() {
         initComponents();
+        showVoters();
     }
     
     public Connection getConnection(){
@@ -41,6 +46,50 @@ public class ManageVoters extends javax.swing.JFrame {
             return null;
         }
     }
+    
+    public ArrayList<AccountsDB> getList(){
+            ArrayList<AccountsDB> List  = new ArrayList<AccountsDB>();
+            Connection con = getConnection();
+            String query = "SELECT * FROM accounts_table";
+
+            Statement st;
+            ResultSet rs;
+
+        try {
+
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            AccountsDB records;
+
+            while(rs.next()){
+                records = new AccountsDB(rs.getString("name"),rs.getString("idnumber"),rs.getString("username"),rs.getString("password"));
+                List.add(records);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return List;
+
+    } 
+    
+    public void showVoters(){
+        ArrayList<AccountsDB> list = getList();
+        DefaultTableModel model = (DefaultTableModel)tbl_accounts.getModel();
+        // clear jtable content
+        model.setRowCount(0);
+        Object[] row = new Object[5];
+        for(int i = 0; i < list.size(); i++)
+        {
+            row[0] = list.get(i).getName();
+            row[1] = list.get(i).getIdnum();           
+            row[2] = list.get(i).getUsername();                      
+            
+            model.addRow(row);
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,7 +103,7 @@ public class ManageVoters extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_accounts = new javax.swing.JTable();
         btn_back = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
 
@@ -66,41 +115,31 @@ public class ManageVoters extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANAGE VOTERS");
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_accounts.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tbl_accounts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Name", "ID Number"
+                "Name", "ID Number", "Username"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_accounts);
 
         btn_back.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_back.setText("Back");
@@ -225,6 +264,6 @@ public class ManageVoters extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl_accounts;
     // End of variables declaration//GEN-END:variables
 }
