@@ -32,7 +32,7 @@ public class Login extends javax.swing.JFrame {
     }   
     
     public Connection getConnection(){
-        String url = "jdbc:mysql://localhost:3306/voting_db?useTimezone=true&serverTimezone=UTC";
+        String url = "jdbc:mysql://localhost:3306/voting_db";
         String username = "root";
         String password = "";
         Connection con = null;
@@ -245,7 +245,7 @@ public class Login extends javax.swing.JFrame {
             dispose();
             new AdminPanel().setVisible(true);
         }
-        else if (username.equals("user1")&& password.equals("1234"))
+        else if (username.equals("")&& password.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Login Successful");
             dispose();
