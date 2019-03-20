@@ -54,6 +54,11 @@ public class SignUp extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         btn_back = new javax.swing.JButton();
         lbl_username = new javax.swing.JLabel();
+<<<<<<< Updated upstream
+=======
+        usernamef = new javax.swing.JPasswordField();
+
+>>>>>>> Stashed changes
         jSeparator4 = new javax.swing.JSeparator();
         usernamef = new javax.swing.JTextField();
 
@@ -204,6 +209,11 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(lbl_username)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(usernamef, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)))
+<<<<<<< Updated upstream
+=======
+                        .addComponent(usernamef)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)))
+>>>>>>> Stashed changes
                 .addGap(122, 122, 122))
         );
         jPanel4Layout.setVerticalGroup(
@@ -224,8 +234,17 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbl_username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< Updated upstream
                 .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
+=======
+<<<<<<< Updated upstream
+                .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+
+                .addComponent(usernamef, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+>>>>>>> Stashed changes
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_pass)
@@ -398,11 +417,35 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Existing Username.");
         } else if(checkUsername(idnumber) == true){
             JOptionPane.showMessageDialog(null,"Existing ID Number.");
+        } else if(password.equals("")){
+            JOptionPane.showMessageDialog(null,"Add Password");
         }else {
             PreparedStatement ps;
             String query = "INSERT INTO accounts_table(name,idnumber,username,password) VALUES (?,?,?,?)";
-
-            try{
+            
+        try{
+            Connection con = getConnection();
+            ps = con.prepareStatement(query);
+            
+            ps.setString(1, name);
+            ps.setString(2, idnumber);
+            ps.setString(3, username);
+            ps.setString(4, password);
+            
+            if(ps.executeUpdate()>0)
+            {
+                JOptionPane.showMessageDialog(null, "Add");
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,ex);
+        }
+            }
+   // }
+//}
+        /*if (namef.getText() != null || idnumf.getText() != null || passwordf.getText() != null )
+        {
+            try {
+>>>>>>> Stashed changes
                 Connection con = getConnection();
                 ps = con.prepareStatement(query);
 
@@ -434,9 +477,20 @@ public class SignUp extends javax.swing.JFrame {
         jSeparator4.setBackground(new Color(149,165,166));
     }//GEN-LAST:event_usernamefFocusGained
 
-    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefFocusLost
+
+    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {                                    
         lbl_username.setForeground(new Color(33,33,33));
         jSeparator4.setBackground(new Color(33,33,33));
+
+    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {                                    
+        lbl_username.setForeground(new Color(33,33,33));
+        jSeparator4.setBackground(new Color(33,33,33));
+
+        // TODO add your handling code here:
+    }                                     
+
+    private void usernamefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernamefFocusLost
+        // TODO add your handling code here:
     }//GEN-LAST:event_usernamefFocusLost
 
     private void usernamefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefActionPerformed
@@ -449,9 +503,9 @@ public class SignUp extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        //If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         //For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+       
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
