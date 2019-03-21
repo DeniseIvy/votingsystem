@@ -5,6 +5,11 @@
         <group>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/SignUp.java</file>
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Login.java</file>
+<<<<<<< Updated upstream
+=======
+            <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/ViewResults.java</file>
+            <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/ManageCandidate.java</file>
+>>>>>>> Stashed changes
             <file>file:/C:/Users/Nicolei/Documents/Repository/votingsystem/src/Vote_p.java</file>
         </group>
     </open-files>
